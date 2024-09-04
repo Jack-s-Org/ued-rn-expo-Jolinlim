@@ -10,6 +10,7 @@ import DiscoverScreen from "./DiscoverScreen";
 import AppDrawer from "./AppDrawer";
 import SettingsScreen from "./SettingsScreen";
 import AddScreen from "./AddScreen";
+import CharacterScreen from "./CharacterScreen";
 
 const MainStacks = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,91 +18,104 @@ const Tab = createBottomTabNavigator();
 const Empty = () => null;
 
 const MainTabs = ({ navigation }) => {
-  const [unreadCount, setUnreadCount] = useState(3);
+  const [unreadCount, setUnreadCount] = useState(4);
   return (
-    <AppDrawer navigation={navigation}>
-      <SafeAreaView style={{ height: "100%" }}>
-        <Tab.Navigator
-          screenOptions={{
-            headerShown: false,
-            tabBarActiveTintColor: "#408086",
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="home" size={size} color={color} />
-              ),
-              tabBarLabel: "Home",
-            }}
-          />
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: "#000000",
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+          tabBarLabel: "Home",
+        }}
+      />
 
-          <Tab.Screen
-            name="Discover"
-            component={DiscoverScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="search" size={size} color={color} />
-              ),
-              tabBarLabel: "Discover",
-            }}
-          />
+      {/* <Tab.Screen
+        name="Discover"
+        component={DiscoverScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="search" size={size} color={color} />
+          ),
+          tabBarLabel: "Discover",
+        }}
+      /> */}
 
-          <Tab.Screen
-            name="AddTab"
-            component={Empty} // this is a workaround to show a full screen when this tab is pressed
-            options={{
-              tabBarIcon: ({ color }) => (
-                <Ionicons name="add" size={36} color={color} />
-              ),
-              tabBarLabel: () => null,
-            }}
-            listeners={{
-              tabPress: (e) => {
-                e.preventDefault(); // stop default navigation
-                navigation.navigate("Add"); // manually navigate to the stack screen outside of the tab navigators
-              },
-            }}
-          />
+      <Tab.Screen
+        name="AddTab"
+        component={Empty} // this is a workaround to show a full screen when this tab is pressed
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="add" size={36} color={color} />
+          ),
+          tabBarLabel: () => null,
+        }}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault(); // stop default navigation
+            navigation.navigate("Add"); // manually navigate to the stack screen outside of the tab navigators
+          },
+        }}
+      />
 
-          <Tab.Screen
-            name="Inbox"
-            component={NotificationsScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="chatbox" size={size} color={color} />
-              ),
-              tabBarLabel: "Inbox",
-              tabBarBadge: unreadCount,
-            }}
-            listeners={{
-              tabPress: () => {
-                setUnreadCount(null);
-              },
-            }}
-          />
+      <Tab.Screen
+        name="Character"
+        component={Empty} // this is a workaround to show a full screen when this tab is pressed
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="add" size={36} color={color} />
+          ),
+          tabBarLabel: () => null,
+        }}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault(); // stop default navigation
+            navigation.navigate("Character"); // manually navigate to the stack screen outside of the tab navigators
+          },
+        }}
+      />
 
-          <Tab.Screen
-            name="SettingsDrawer"
-            component={MeScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="person" size={size} color={color} />
-              ),
-              tabBarLabel: "Me",
-            }}
-          />
-        </Tab.Navigator>
-      </SafeAreaView>
-    </AppDrawer>
+      {/* <Tab.Screen
+        name="Notification"
+        component={NotificationsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="chatbox" size={size} color={color} />
+          ),
+          tabBarLabel: "Notification",
+          tabBarBadge: unreadCount,
+        }}
+        listeners={{
+          tabPress: () => {
+            setUnreadCount(null);
+          },
+        }}
+      /> */}
+
+      <Tab.Screen
+        name="Me"
+        component={MeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+          tabBarLabel: "Me",
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 
 const MainScreens = () => {
   return (
-    <MainStacks.Navigator>
+    <MainStacks.Navigator screenOptions={{ headerShown: false }}>
       <MainStacks.Screen
         name="MainTabs"
         component={MainTabs}
@@ -112,6 +126,13 @@ const MainScreens = () => {
         component={AddScreen}
         options={{ animation: "fade_from_bottom" }}
       />
+
+      <MainStacks.Screen
+        name="Character"
+        component={CharacterScreen}
+        options={{ animation: "fade_from_bottom" }}
+      />
+
       <MainStacks.Screen
         name="Settings"
         component={SettingsScreen}

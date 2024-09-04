@@ -20,12 +20,6 @@ export default function AppDrawer({ navigation, children }) {
         return (
           <SafeAreaView>
             <DrawerItem
-              label="Settings"
-              onPress={() => {
-                navigation.navigate("Settings");
-              }}
-            />
-            <DrawerItem
               label="Sign Out"
               onPress={() => {
                 navigation.replace("SignIn");
