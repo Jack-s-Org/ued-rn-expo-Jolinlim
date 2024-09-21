@@ -1,14 +1,28 @@
 import { View, StyleSheet, Text, Image, Button, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
-import VideoPlayer from "../assets/components/VideoPlayer";
+import { Video } from "expo-av";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Separator = () => <View style={styles.separator} />;
 
 const AddScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
-      <VideoPlayer></VideoPlayer>
+      {/* Back Button */}
+      <Pressable
+        style={styles.backbutton}
+        onPress={() => {
+          navigation.replace("Main", { screen: "HomeScreen" });
+        }}
+      >
+        <Ionicons
+          name="chevron-back-sharp"
+          size={24}
+          color="black"
+          style={styles.icon}
+        />
+      </Pressable>
       <Image
         source={require("@/assets/images/Avocado.png")}
         style={{
@@ -72,7 +86,7 @@ const AddScreen = ({ navigation }) => {
         <Pressable
           style={styles.button}
           onPress={() => {
-            navigation.replace("Main", { screen: "Home" });
+            navigation.replace("Main", { screen: "CustomBowl" });
           }}
         >
           <Text style={styles.buttonText}>Start</Text>
@@ -158,6 +172,10 @@ const styles = StyleSheet.create({
     borderBottomColor: "#000000",
     borderBottomWidth: 1,
     top: 308,
+  },
+
+  backbutton: {
+    right: 300,
   },
 });
 

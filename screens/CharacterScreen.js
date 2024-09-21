@@ -6,46 +6,84 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
+import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import ProgressBarSteps from "@/ProgressBar/ProgressBarSteps";
-import ProgressBarRunning from "@/ProgressBar/ProgressBarRunning";
-import ProgressBarJump from "@/ProgressBar/ProgressBarJump";
-import ProgressBarPushUpsHits from "@/ProgressBar/ProgressBarPushUps";
-import ProgressBarSquats from "@/ProgressBar/ProgressBarSquats";
+import ProgressBarJump from "./ProgressBar/ProgressBarJump";
+import ProgressBarPushUpsHits from "./ProgressBar/ProgressBarPushUps";
+import ProgressBarRunning from "./ProgressBar/ProgressBarRunning";
+import ProgressBarSquats from "./ProgressBar/ProgressBarSquats";
+import ProgressBarSteps from "./ProgressBar/ProgressBarSteps";
+import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 const CharacterScreen = ({ navigation }) => {
+  const [timerPlay, settimerPlay] = useState(false);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView style={styles.container}>
+        {/* Back Button */}
+        <View style={styles.boxTop}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            {/* Back Button */}
+            <Pressable
+              style={styles.button}
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              <Ionicons
+                name="chevron-back-sharp"
+                size={24}
+                color="black"
+                style={styles.icon}
+              />
+            </Pressable>
+
+            {/* Coins */}
+            <View
+              style={{
+                marginLeft: 150,
+              }}
+            >
+              <Pressable
+                style={styles.button}
+                onPress={() => {
+                  navigation.replace("Me", {
+                    screen: "MeScreen",
+                  });
+                }}
+              >
+                <Image
+                  source={require("@/assets/images/CoinsandProfile.png")}
+                  style={{
+                    width: 130,
+                    height: 32,
+                    resizeMode: "contain",
+                  }}
+                />
+              </Pressable>
+            </View>
+          </View>
+        </View>
+
         {/* Character Image */}
         <Image
-          source={require("@/assets/images/Me_Character.png")}
+          source={require("@/assets/images/Character.png")}
           style={styles.image}
         />
 
-        {/* Back Button */}
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            navigation.goBack();
-          }}
-        >
-          <Ionicons
-            name="chevron-back-sharp"
-            size={24}
-            color="black"
-            style={styles.icon}
-          />
-        </Pressable>
-
         {/* Title Text */}
-        <Text style={styles.textTitle}> Avocado + Tuna</Text>
+        <Text style={styles.textTitle}> Challenges</Text>
 
         {/* Description Text */}
         <Text style={styles.text}>
-          50g of proteins + 70 of carbohydrates + 30g of fats = 120 cal
+          Let’s grab the coins by completing these challenges!
         </Text>
 
         <View style={styles.box}>
@@ -65,44 +103,22 @@ const CharacterScreen = ({ navigation }) => {
             <View style={styles.innerBox}>
               {/* Image Inside the Box */}
               <Image
-                source={require("@/assets/images/Steps.png")}
+                source={require("@/assets/images/Run.png")}
                 style={styles.boxImage}
               />
               {/* Text Inside the Box */}
-              <Text style={styles.textBox}>Steps</Text>
+              <Text style={styles.textBox}>Running</Text>
             </View>
 
             {/* Third Box */}
             <View style={styles.innerBox}>
               {/* Image Inside the Box */}
               <Image
-                source={require("@/assets/images/Steps.png")}
+                source={require("@/assets/images/Rope.png")}
                 style={styles.boxImage}
               />
               {/* Text Inside the Box */}
-              <Text style={styles.textBox}>Steps</Text>
-            </View>
-
-            {/* Fourth Box */}
-            <View style={styles.innerBox}>
-              {/* Image Inside the Box */}
-              <Image
-                source={require("@/assets/images/Steps.png")}
-                style={styles.boxImage}
-              />
-              {/* Text Inside the Box */}
-              <Text style={styles.textBox}>Steps</Text>
-            </View>
-
-            {/* Fifth Box */}
-            <View style={styles.innerBox}>
-              {/* Image Inside the Box */}
-              <Image
-                source={require("@/assets/images/Steps.png")}
-                style={styles.boxImage}
-              />
-              {/* Text Inside the Box */}
-              <Text style={styles.textBox}>Steps</Text>
+              <Text style={styles.textBox}>Jump</Text>
             </View>
           </ScrollView>
         </View>
@@ -174,6 +190,16 @@ const CharacterScreen = ({ navigation }) => {
           </View>
           <ProgressBarSquats></ProgressBarSquats>
         </View>
+
+        <CountdownCircleTimer
+          isPlaying={timerPlay}
+          duration={7}
+          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
+          trailColor="#000000"
+          colorsTime={[7, 5, 2, 0]}
+        >
+          {({ remainingTime }) => <Text>{remainingTime}</Text>}
+        </CountdownCircleTimer>
       </SafeAreaView>
     </ScrollView>
   );
@@ -185,14 +211,18 @@ const styles = StyleSheet.create({
     marginTop: 16,
     flex: 1,
     backgroundColor: "#F2F4E6",
-    // alignItems: "center",
-    // justifyContent: "center",
+  },
+
+  boxTop: {
+    justifyContent: "space-between",
+    flexDirection: "row",
+    marginBottom: 16,
+    paddingHorizontal: 16,
   },
 
   button: {
-    position: "absolute",
-    top: 40,
-    left: 16,
+    marginRight: 16,
+    flexDirection: "row",
   },
 
   image: {

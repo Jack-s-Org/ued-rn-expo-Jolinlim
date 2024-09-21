@@ -10,13 +10,13 @@ const SignInScreen = ({ navigation }) => {
           display: "flex",
           alignItems: "flex-start",
           justifyContent: "flex-start",
-          marginLeft: -50,
+          marginLeft: -16,
         }}
       >
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "64",
+            fontSize: "70",
             color: "#1C453F",
           }}
         >
@@ -25,7 +25,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "64",
+            fontSize: "70",
             color: "#1C453F",
           }}
         >
@@ -34,7 +34,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "64",
+            fontSize: "70",
             color: "#1C453F",
           }}
         >
@@ -43,20 +43,20 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "64",
+            fontSize: "70",
             color: "#1C453F",
           }}
         >
-          ON TRACK
+          ON TRACK.
         </Text>
       </View>
       <Image
-        source={require("@/assets/images/LandingCharacter_-04.png")}
+        source={require("@/assets/images/SignIn-10.png")}
         style={{
           position: "absolute",
-          top: 300,
-          height: 380,
-          width: 380,
+          top: 314,
+          height: 400,
+          width: 400,
           alignSelf: "center",
         }}
       />
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     flexDirection: "center",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#F2F4E6",
     // margin: "6%",
   },
 });
