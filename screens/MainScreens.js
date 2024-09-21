@@ -48,7 +48,7 @@ const MainTabs = ({ navigation }) => {
             </View>
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: "#1C453F", top: 8 }}>Home</Text> 
+            <Text style={{ color: "#1C453F", top: 8 }}>Home</Text>
           ),
           tabBarActiveTintColor: "#F8ECDC",
           tabBarInactiveTintColor: "black",
@@ -57,7 +57,7 @@ const MainTabs = ({ navigation }) => {
 
       <Tab.Screen
         name="Scan"
-        component={Empty} 
+        component={Empty}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <View
@@ -85,7 +85,7 @@ const MainTabs = ({ navigation }) => {
 
       <Tab.Screen
         name="Character"
-        component={SecondaryScreens} 
+        component={SecondaryScreens}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <View
@@ -98,15 +98,15 @@ const MainTabs = ({ navigation }) => {
             </View>
           ),
           tabBarLabel: ({ focused }) => (
-            <Text style={{ color: "#1C453F", top: 8 }}>Me</Text> re
+            <Text style={{ color: "#1C453F", top: 8 }}>Me</Text>
           ),
           tabBarActiveTintColor: "#F8ECDC",
           tabBarInactiveTintColor: "#black",
         }}
         listeners={{
           tabPress: (e) => {
-            e.preventDefault(); 
-            navigation.navigate("Character"); /
+            e.preventDefault();
+            navigation.navigate("Character");
           },
         }}
       />
@@ -151,7 +151,6 @@ const MainScreens = () => {
         component={ArticleScreen}
         options={{ animation: "fade_from_bottom" }}
       />
-
     </MainStacks.Navigator>
   );
 };
