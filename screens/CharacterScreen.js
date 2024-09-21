@@ -15,10 +15,8 @@ import ProgressBarPushUpsHits from "./ProgressBar/ProgressBarPushUps";
 import ProgressBarRunning from "./ProgressBar/ProgressBarRunning";
 import ProgressBarSquats from "./ProgressBar/ProgressBarSquats";
 import ProgressBarSteps from "./ProgressBar/ProgressBarSteps";
-import { CountdownCircleTimer } from "react-native-countdown-circle-timer";
 
 const CharacterScreen = ({ navigation }) => {
-  const [timerPlay, settimerPlay] = useState(false);
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView style={styles.container}>
@@ -190,16 +188,6 @@ const CharacterScreen = ({ navigation }) => {
           </View>
           <ProgressBarSquats></ProgressBarSquats>
         </View>
-
-        <CountdownCircleTimer
-          isPlaying={timerPlay}
-          duration={7}
-          colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
-          trailColor="#000000"
-          colorsTime={[7, 5, 2, 0]}
-        >
-          {({ remainingTime }) => <Text>{remainingTime}</Text>}
-        </CountdownCircleTimer>
       </SafeAreaView>
     </ScrollView>
   );
