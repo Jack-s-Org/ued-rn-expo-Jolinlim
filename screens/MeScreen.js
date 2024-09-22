@@ -450,10 +450,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.25,
     shadowRadius: 1,
-    height: 96,
+    height: 100,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 16,
+    alignItems: "center",
   },
 
   boxDailySummaryText: {

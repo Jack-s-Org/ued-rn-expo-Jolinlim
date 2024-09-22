@@ -16,7 +16,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "70",
+            fontSize: 70,
             color: "#1C453F",
           }}
         >
@@ -25,7 +25,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "70",
+            fontSize: 70,
             color: "#1C453F",
           }}
         >
@@ -34,7 +34,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "70",
+            fontSize: 70,
             color: "#1C453F",
           }}
         >
@@ -43,7 +43,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "FuturaBlack",
-            fontSize: "70",
+            fontSize: 70,
             color: "#1C453F",
           }}
         >
@@ -82,7 +82,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "InterSemiBold",
-            fontSize: "16",
+            fontSize: 16,
             color: "white",
           }}
         >
@@ -108,7 +108,7 @@ const SignInScreen = ({ navigation }) => {
         <Text
           style={{
             fontFamily: "InterSemiBold",
-            fontSize: "16",
+            fontSize: 16,
             color: "black",
           }}
         >
